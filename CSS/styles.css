@@ -8,17 +8,17 @@
 }
 
 body{
-    display: flex;
-    overflow: hidden;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    background: url(../Images/rain.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    backdrop-filter: blur(5px); 
-    transition: all .5s ease;
+    display: flex !important;
+    overflow: hidden !important;
+    justify-content: center !important;
+    align-items: center !important;
+    overflow: hidden !important;
+    background: url(../Images/clear.jpg);
+    background-repeat: no-repeat !important;
+    background-size: cover !important ;
+    height: 100vh !important;
+    backdrop-filter: blur(5px) !important; 
+    transition: all .5s ease !important;
 }
 
 
@@ -157,6 +157,7 @@ body{
     color: #e6e3e3;
 }
 .city-name{
+    align-items: center;
     margin-top: 40%;
 }
 /* .blur-background{
