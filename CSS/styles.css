@@ -8,11 +8,11 @@
 }
 
 body{
-    display: flex !important;
-    overflow: hidden !important;
-    justify-content: center !important;
-    align-items: center !important;
-    overflow: hidden !important;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
     background: url(../Images/cloudy.jpg);
     background-repeat: no-repeat !important;
     background-size: cover !important ;
@@ -42,7 +42,7 @@ body{
     margin: 50px 10%;
     /* background: red; */
     z-index: 100;
-    min-width: 80%;
+    min-width: 75%;
     height: 80%;
     overflow: hidden;
     border-radius: 10px;

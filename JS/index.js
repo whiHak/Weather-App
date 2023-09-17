@@ -21,7 +21,6 @@ const newDiv = (obj) => {
 function getCity() {
   const cityName = cityInput.val().trim();
   if (!cityName) return; // exits function if there is no input
-  const APIKey = "e9af74ecfd269052e19edf4462a39042";
   const APIUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${APIKey}`;
 
   $.get(APIUrl) 
@@ -37,7 +36,6 @@ function getCity() {
 }
 
 function getWeatherInfo(name, lon, lat){
-    const APIKey = "e9af74ecfd269052e19edf4462a39042"
     const APIUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}`
     
     $.get(APIUrl)
@@ -60,28 +58,44 @@ function getWeatherInfo(name, lon, lat){
         tempStatus.text(filteredResponse[0].weather[0].main)
         currentTemp.text((filteredResponse[0].main.temp - 273.15).toFixed(2) + '°c')
 
-        tempStatus.val(filteredResponse[0].weather[0].main)
+        tempStatus.val(filteredResponse[0].weather[0].description)
         switch (tempStatus.val()){
             case 'Sunny':
                 body.css('background', 'url(../Images/sunny.jpg)')
                 backImg.attr('src', './Images/sunny.jpg')
                 break;
-            case 'Clear':
+            case 'clear sky':
                 body.css('background', 'url(../Images/clear.jpg)')
                 backImg.attr('src', './Images/clear.jpg')
                 break;
-            case 'Clouds':
+            case 'broken clouds':
+                body.css('background', 'url(../Images/broken-clouds.jpg)')
+                backImg.attr('src', './Images/broken-clouds.jpg')
+                break;
+            case 'few clouds':
+                body.css('background', 'url(../Images/few-clouds.jpg)')
+                backImg.attr('src', './Images/few-clouds.jpg')
+            case 'scattered clouds':
                 body.css('background', 'url(../Images/cloudy.jpg)')
                 backImg.attr('src', './Images/cloudy.jpg')
                 break;
-            case 'Rain':
+            case 'moderate rain':
+            case 'light rain':
                 body.css('background', 'url(../Images/rainny.jpg)')
                 backImg.attr('src', './Images/rainny.jpg')
                 break;
-            
-            default:
+            case 'thunderstorm':
                 body.css('background', 'url(../Images/lightning1.jpg)')
                 backImg.attr('src', './Images/lightning1.jpg')
+            case 'mist':
+                body.css('background', 'url(../Images/mist.jpg)')
+                backImg.attr('src', './Images/mist.jpg')
+            case 'snow':
+                body.css('background', 'url(../Images/snow.jpg)')
+                backImg.attr('src', './Images/snow.jpg')
+            default:
+                body.css('background', 'url(../Images/broken-clouds.jpg)')
+                backImg.attr('src', './Images/broken-clouds.jpg')
 
 
         }
@@ -90,8 +104,8 @@ function getWeatherInfo(name, lon, lat){
     })
     
 }
-body.css('background', 'url(../Images/cloudy.jpg)')
-backImg.attr('src', './Images/cloudy.jpg')
+body.css('background', 'url(../Images/broken-clouds.jpg)')
+backImg.attr('src', './Images/broken-clouds.jpg')
 
 const date = new Date()
 currentDate.text(date)
