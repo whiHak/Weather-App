@@ -78,6 +78,7 @@ function getWeatherInfo(name, lon, lat){
                 body.css('background', 'url(../Images/rainny.jpg)')
                 backImg.attr('src', './Images/rainny.jpg')
                 break;
+            
             default:
                 body.css('background', 'url(../Images/lightning1.jpg)')
                 backImg.attr('src', './Images/lightning1.jpg')
@@ -89,8 +90,8 @@ function getWeatherInfo(name, lon, lat){
     })
     
 }
-body.css('background', 'url(../Images/clear.jpg)')
-backImg.attr('src', './Images/clear.jpg')
+body.css('background', 'url(../Images/cloudy.jpg)')
+backImg.attr('src', './Images/cloudy.jpg')
 
 const date = new Date()
 currentDate.text(date)

@@ -105,9 +105,10 @@ body{
     color: #fff;
     font-size: 17px;
 }
-.card i{
-    font-size: 60px;
-}
+/* .card img{
+    width: 15%;
+    height: 15%;
+} */
 
 .search-section{
     position: absolute;
@@ -157,7 +158,7 @@ body{
     color: #e6e3e3;
 }
 .city-name{
-    align-items: center;
+    text-align: center;
     margin-top: 40%;
 }
 /* .blur-background{
@@ -199,6 +200,7 @@ hr{
     .city-name{
         color: #fff !important;
         margin-top: 6%;
+        text-wrap: nowrap;
     }
     #current-temp{
         color: #fff !important;
