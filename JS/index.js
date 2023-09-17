@@ -21,6 +21,7 @@ const newDiv = (obj) => {
 function getCity() {
   const cityName = cityInput.val().trim();
   if (!cityName) return; // exits function if there is no input
+  const APIKey = "e9af74ecfd269052e19edf4462a39042";
   const APIUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${APIKey}`;
 
   $.get(APIUrl) 
