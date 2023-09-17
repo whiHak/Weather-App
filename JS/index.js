@@ -21,7 +21,7 @@ const newDiv = (obj) => {
 function getCity() {
   const cityName = cityInput.val().trim();
   if (!cityName) return; // exits function if there is no input
-  const APIKey = "e9af74ecfd269052e19edf4462a39042";
+  
   const APIUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${APIKey}`;
 
   $.get(APIUrl) 
@@ -37,8 +37,7 @@ function getCity() {
 }
 
 function getWeatherInfo(name, lon, lat){
-    const APIKey = "e9af74ecfd269052e19edf4462a39042"
-    const APIUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}`
+        const APIUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}`
     
     $.get(APIUrl)
     .done((response, status) =>{
