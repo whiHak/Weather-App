@@ -81,10 +81,7 @@ function getWeatherInfo(name, lon, lat) {
         case "few clouds":
           body.css("background", "url(../Images/few-clouds.jpg)");
           backImg.attr("src", "./Images/few-clouds.jpg");
-<<<<<<< HEAD
           break;
-=======
->>>>>>> db0323c0478941147e6c4278e2d56d62fa901829
         case "scattered clouds":
           body.css("background", "url(../Images/cloudy.jpg)");
           backImg.attr("src", "./Images/cloudy.jpg");
@@ -97,7 +94,6 @@ function getWeatherInfo(name, lon, lat) {
         case "thunderstorm":
           body.css("background", "url(../Images/lightning1.jpg)");
           backImg.attr("src", "./Images/lightning1.jpg");
-<<<<<<< HEAD
           break;
         case "mist":
           body.css("background", "url(../Images/mist.jpg)");
@@ -108,14 +104,12 @@ function getWeatherInfo(name, lon, lat) {
           body.css("background", "url(../Images/snow.jpg)");
           backImg.attr("src", "./Images/snow.jpg");
           break;
-=======
         case "mist":
           body.css("background", "url(../Images/mist.jpg)");
           backImg.attr("src", "./Images/mist.jpg");
         case "snow":
           body.css("background", "url(../Images/snow.jpg)");
           backImg.attr("src", "./Images/snow.jpg");
->>>>>>> db0323c0478941147e6c4278e2d56d62fa901829
         default:
           body.css("background", "url(../Images/broken-clouds.jpg)");
           backImg.attr("src", "./Images/broken-clouds.jpg");
@@ -138,11 +132,7 @@ cityInput.keyup(function (event) {
 $(".forcast-cards").on("click", ".card", function () {
   const clickedCard = $(this);
   const attributeValue = clickedCard.attr("description");
-<<<<<<< HEAD
   tempStatus.text(attributeValue);
-=======
-  tempStatus.text(attributeValue)
->>>>>>> db0323c0478941147e6c4278e2d56d62fa901829
   switch (attributeValue) {
     case "Sunny":
       body.css("background", "url(../Images/sunny.jpg)");
