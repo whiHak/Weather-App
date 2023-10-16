@@ -65,75 +65,16 @@ function getWeatherInfo(name, lon, lat) {
       );
 
       tempStatus.val(filteredResponse[0].weather[0].description);
-      switch (tempStatus.val()) {
-        case "Sunny":
-          body.css("background", "url(../Images/sunny.jpg)");
-          backImg.attr("src", "./Images/sunny.jpg");
-          break;
-        case "clear sky":
-          body.css("background", "url(../Images/clear.jpg)");
-          backImg.attr("src", "./Images/clear.jpg");
-          break;
-        case "broken clouds":
-          body.css("background", "url(../Images/broken-clouds.jpg)");
-          backImg.attr("src", "./Images/broken-clouds.jpg");
-          break;
-        case "few clouds":
-          body.css("background", "url(../Images/few-clouds.jpg)");
-          backImg.attr("src", "./Images/few-clouds.jpg");
-          break;
-        case "scattered clouds":
-          body.css("background", "url(../Images/cloudy.jpg)");
-          backImg.attr("src", "./Images/cloudy.jpg");
-          break;
-        case "moderate rain":
-        case "light rain":
-          body.css("background", "url(../Images/rainny.jpg)");
-          backImg.attr("src", "./Images/rainny.jpg");
-          break;
-        case "thunderstorm":
-          body.css("background", "url(../Images/lightning1.jpg)");
-          backImg.attr("src", "./Images/lightning1.jpg");
-          break;
-        case "mist":
-          body.css("background", "url(../Images/mist.jpg)");
-          backImg.attr("src", "./Images/mist.jpg");
-          break;
-        case "snow":
-        case "light snow":
-          body.css("background", "url(../Images/snow.jpg)");
-          backImg.attr("src", "./Images/snow.jpg");
-          break;
-        case "mist":
-          body.css("background", "url(../Images/mist.jpg)");
-          backImg.attr("src", "./Images/mist.jpg");
-        case "snow":
-          body.css("background", "url(../Images/snow.jpg)");
-          backImg.attr("src", "./Images/snow.jpg");
-        default:
-          body.css("background", "url(../Images/broken-clouds.jpg)");
-          backImg.attr("src", "./Images/broken-clouds.jpg");
-      }
+      changeBack(tempStatus.val());
+      
     })
     .fail(() => {
       alert("Error while fetching API");
     });
 }
-body.css("background", "url(../Images/broken-clouds.jpg)");
-backImg.attr("src", "./Images/broken-clouds.jpg");
 
-const date = new Date();
-currentDate.text(date);
-
-searchBtn.click(getCity);
-cityInput.keyup(function (event) {
-  if (event.which === 13) getCity();
-});
-$(".forcast-cards").on("click", ".card", function () {
-  const clickedCard = $(this);
-  const attributeValue = clickedCard.attr("description");
-  tempStatus.text(attributeValue);
-  switch (attributeValue) {
+changeBack = (prop) => {
+  switch (prop) {
     case "Sunny":
       body.css("background", "url(../Images/sunny.jpg)");
       backImg.attr("src", "./Images/sunny.jpg");
@@ -172,8 +113,31 @@ $(".forcast-cards").on("click", ".card", function () {
       body.css("background", "url(../Images/snow.jpg)");
       backImg.attr("src", "./Images/snow.jpg");
       break;
+    case "mist":
+      body.css("background", "url(../Images/mist.jpg)");
+      backImg.attr("src", "./Images/mist.jpg");
+    case "snow":
+      body.css("background", "url(../Images/snow.jpg)");
+      backImg.attr("src", "./Images/snow.jpg");
     default:
       body.css("background", "url(../Images/broken-clouds.jpg)");
       backImg.attr("src", "./Images/broken-clouds.jpg");
   }
+
+}
+body.css("background", "url(../Images/broken-clouds.jpg)");
+backImg.attr("src", "./Images/broken-clouds.jpg");
+
+const date = new Date();
+currentDate.text(date);
+
+searchBtn.click(getCity);
+cityInput.keyup(function (event) {
+  if (event.which === 13) getCity();
+});
+cards.on("click", ".card", function () {
+  const clickedCard = $(this);
+  const attributeValue = clickedCard.attr("description");
+  tempStatus.text(attributeValue);
+  changeBack(attributeValue);
 });
