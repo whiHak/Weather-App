@@ -1,5 +1,6 @@
 const cityInput = $("#city-name");
 const searchBtn = $(".search");
+const currentLocationBtn = $(".curr-location-btn");
 const cards = $(".forcast-cards");
 const card = $(".card");
 const forcastedCityName = $(".city-name");
@@ -24,7 +25,6 @@ const newDiv = (obj) => {
 function getCity() {
   const cityName = cityInput.val().trim();
   if (!cityName) return; // exits function if there is no input
-  const APIKey = "e9af74ecfd269052e19edf4462a39042";
   const APIUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${APIKey}`;
 
   $.get(APIUrl)
@@ -66,7 +66,6 @@ function getWeatherInfo(name, lon, lat) {
 
       tempStatus.val(filteredResponse[0].weather[0].description);
       changeBack(tempStatus.val());
-      
     })
     .fail(() => {
       alert("Error while fetching API");
@@ -123,8 +122,7 @@ changeBack = (prop) => {
       body.css("background", "url(../Images/broken-clouds.jpg)");
       backImg.attr("src", "./Images/broken-clouds.jpg");
   }
-
-}
+};
 body.css("background", "url(../Images/broken-clouds.jpg)");
 backImg.attr("src", "./Images/broken-clouds.jpg");
 
@@ -132,6 +130,26 @@ const date = new Date();
 currentDate.text(date);
 
 searchBtn.click(getCity);
+const getCoordinate = () => {
+  navigator.geolocation.getCurrentPosition((position) => {
+    $.get(
+      `http://api.openweathermap.org/geo/1.0/reverse?lat=${position.coords.latitude}&lon=${position.coords.longitude}&limit=1&appid=${APIKey}`
+    )
+      .done((response, status) => {
+        const { name, lon, lat } = response[0];
+        getWeatherInfo(name, lon, lat);
+      })
+      .fail(() => {
+        alert("Somthing went wrong");
+      });
+    console.log(position.coords),
+      (error) => {
+        console.log(error);
+      };
+  });
+};
+currentLocationBtn.click(getCoordinate);
+
 cityInput.keyup(function (event) {
   if (event.which === 13) getCity();
 });
