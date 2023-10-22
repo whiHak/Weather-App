@@ -109,7 +109,7 @@ body{
     transition: all .5s ease;
 }
 .card:hover{
-    transform: scale(0.8);
+    transform: scale(0.9);
 }
 /* .card img{
     width: 15%;
